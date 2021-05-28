@@ -33,6 +33,7 @@ img {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+
 .list {
   padding: 0;
   margin: 0;
@@ -168,45 +169,7 @@ img {
   text-transform: uppercase;
   padding-bottom: 30px;
 }
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 300px;
-  min-height: 200px;
-  background-color: var(--cheaf-color);
-}
-.modal-icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-.modal-button {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  transform: translateX(-100%);
-  cursor: pointer;
 
-  padding: 6px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: var(--cheaf-color);
-  border-color: rgba(0, 0, 0, 0.1);
-}
 .button {
   padding: 10px 32px;
   color: var(--cheaf-color);
@@ -502,7 +465,6 @@ img {
 
 .filters-photo {
   position: relative;
-  display: inline-block;
   overflow: hidden;
 }
 
@@ -521,11 +483,15 @@ img {
   padding: 63px 24px;
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
+  overflow: auto;
+}
+.filters-link {
+  text-decoration: none;
+  color: var(--primary-text-color);
 }
 
-.filters-element:hover .filters-subtext,
-.filters-element:focus .filters-subtext {
+.filters-link:hover .filters-subtext,
+.filters-link:focus .filters-subtext {
   opacity: 0.9;
   transform: translateY(0);
 }
@@ -546,3 +512,48 @@ img {
   border-bottom: 1px solid var(--header-line);
   border-left: 1px solid var(--header-line);
 }
+/* Modal window */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  min-height: 200px;
+  background-color: var(--cheaf-color);
+  border-radius: 4px;
+}
+.modal-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+
+  padding: 6px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--cheaf-color);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+/* End Modal window */
